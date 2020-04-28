@@ -521,6 +521,139 @@
       </axis>
     </joint>
 
+    <!-- sensor -->
+    <link name="lidar_link">
+      <pose>0 0 0.11 0 0 0</pose>
+
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.01</mass>
+        <inertia>
+          <ixx>2.1733e-6</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>2.1733e-6</iyy>
+          <iyz>0</iyz>
+          <izz>1.8e-7</izz>
+        </inertia>
+      </inertial>
+
+      <visual name="lidar_visual">
+        <geometry>
+          <cylinder>
+            <radius>0.01</radius>
+            <length>0.02</length>
+          </cylinder>
+        </geometry>
+      </visual>
+
+      <collision name="lidar_collision">
+        <geometry>
+          <cylinder>
+            <radius>0.01</radius>
+            <length>0.02</length>
+          </cylinder>
+        </geometry>
+      </collision>
+
+      <sensor name="laser" type="ray">
+        <pose>0 0 0.01 0 0 0</pose>
+        <ray>
+          <scan>
+            <horizontal>
+              <samples>720</samples>
+              <resolution>1</resolution>
+              <min_angle>-2.0944</min_angle>
+              <max_angle>2.0944</max_angle>
+            </horizontal>
+          </scan>
+          <range>
+            <min>0.1</min>
+            <max>15</max>
+            <resolution>0.01</resolution>
+          </range>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.01</stddev>
+          </noise>
+        </ray>
+        <plugin name="LaserPlugin" filename="libgazebo_ros_laser.so">
+          <topicName>/laser/scan</topicName>
+          <frameName>/lidar_link</frameName>
+        </plugin>
+        <always_on>1</always_on>
+        <update_rate>40</update_rate>
+        <visualize>true</visualize>
+      </sensor>
+    </link>
+
+    <joint name="lidar_joint" type="fixed">
+      <parent>torso_link</parent>
+      <child>lidar_link</child>
+      <pose>0 0 0 0 0 0</pose>
+    </joint>
+
+    <link name="imu_link">
+      <pose>0 0 0 0 0 0</pose>
+
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.01</mass>
+        <inertia>
+          <ixx>2.1733e-6</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>2.1733e-6</iyy>
+          <iyz>0</iyz>
+          <izz>1.8e-7</izz>
+        </inertia>
+      </inertial>
+
+      <visual name="imu_visual">
+        <geometry>
+          <cylinder>
+            <radius>0.01</radius>
+            <length>0.02</length>
+          </cylinder>
+        </geometry>
+      </visual>
+
+      <collision name="imu_collision">
+        <geometry>
+          <cylinder>
+            <radius>0.01</radius>
+            <length>0.02</length>
+          </cylinder>
+        </geometry>
+      </collision>
+
+      <sensor name="imu_sensor" type="imu">
+        <always_on>true</always_on>
+        <update_rate>100</update_rate>
+        <visualize>true</visualize>
+        <topic>__default_topic__</topic>
+        <plugin  name="imu_plugin" filename="libgazebo_ros_imu_sensor.so">
+          <topicName>imu</topicName>
+          <bodyName>imu_link</bodyName>
+          <updateRateHZ>10.0</updateRateHZ>
+          <gaussianNoise>0.0</gaussianNoise>
+          <xyzOffset>0 0 0</xyzOffset>
+          <rpyOffset>0 0 0</rpyOffset>
+          <frameName>imu_link</frameName>
+          <initialOrientationAsReference>false</initialOrientationAsReference>
+        </plugin>
+        <pose>0 0 0.01 0 0 0</pose>
+      </sensor>
+    </link>
+
+    <joint name="imu_joint" type="fixed">
+      <parent>torso_link</parent>
+      <child>imu_link</child>
+      <pose>0 0 0 0 0 0</pose>
+    </joint>
+
+    <!-- gazebo_ros_control plugins -->
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
       <robotNamespace>echo_bot</robotNamespace>
       <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
