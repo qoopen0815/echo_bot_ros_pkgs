@@ -13,5 +13,8 @@ In this project, we aim to implement the following features.
 
 ## Gazebo Simulation
 
-- spawn echo_bot (with gazebo_ros_control) in Gazebo  
-```roslaunch echo_bot_gazebo test.launch```
+spawn echo_bot (with gazebo_ros_control) in Gazebo
+
+```
+roslaunch echo_bot_gazebo test.launch
+```
