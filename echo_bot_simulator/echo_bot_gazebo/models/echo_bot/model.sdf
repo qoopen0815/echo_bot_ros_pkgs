@@ -251,6 +251,7 @@
     </joint>
 
     <link name="wheel_l">
+      <self_collide>1</self_collide>
       <pose>-0.003075 0.078 -0.155687 -1.57079637 0 0</pose>
       <inertial>
         <inertia>
@@ -470,6 +471,7 @@
     </joint>
 
     <link name="wheel_r">
+      <self_collide>1</self_collide>
       <pose>-0.003075 -0.078 -0.155687 -1.57079637 0 0</pose>
       <inertial>
         <inertia>
