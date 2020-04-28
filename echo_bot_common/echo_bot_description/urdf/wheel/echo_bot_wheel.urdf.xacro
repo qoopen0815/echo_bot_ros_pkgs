@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find echo_bot_description)/urdf/wheel/echo_bot_wheel.transmission.xacro"/>
+  <xacro:include filename="$(find echo_bot_description)/urdf/wheel/echo_bot_wheel.gazebo.xacro"/>
+
+  <property name="wheel_radius" value="0.029"/>
+  <property name="wheel_length" value="0.012"/>
+  <property name="wheel_mass" value="0.039831"/>
+
+  <xacro:macro name="cylinder_inertial" params="mass radius length">
+    <mass value="${mass}"/>
+    <inertia  ixx="${((radius*radius)/4 + (length*length)/12)*mass}" ixy="0" ixz="0"
+              iyy="${((radius*radius)/4 + (length*length)/12)*mass}" iyz="0"
+              izz="${(mass*radius*radius)/2}" />
+  </xacro:macro>
+
+  <xacro:macro name="wheel_v0" params="prefix parent *joint_origin *joint_axis">
+
+    <link name="wheel_${prefix}">
+      <visual>
+        <geometry>
+          <mesh filename="package://echo_bot_description/meshes/DAE/tyre.dae"/>
+        </geometry>
+      </visual>
+      <collision>
+        <!-- <origin xyz="0 -0.003 0" rpy="${-M_PI/2} 0 0"/> -->
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <!-- <cylinder radius="${wheel_radius}" length="${wheel_length}"/> -->
+          <mesh filename="package://echo_bot_description/meshes/STL/tyre.stl"/>
+        </geometry>      
+      </collision>
+      <inertial>
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+        <mass value="0.039831" />
+        <inertia  ixx="8.85243975e-06" ixy="0.0" ixz="0.0" 
+                  iyy="8.85243975e-06" iyz="0.0" 
+                  izz="1.67489355e-05" />
+        <!-- <cylinder_inertial  mass="${wheel_mass}"
+                            radius="${wheel_radius}" length="${wheel_length}"/> -->
+      </inertial>
+    </link>
+
+    <joint name="lower_${prefix}leg_to_wheel_${prefix}" type="continuous">
+      <insert_block name="joint_origin"/>
+      <parent link="${parent}" />
+      <child link="wheel_${prefix}"/>
+      <insert_block name="joint_axis"/>
+      <limit velocity="12.0" effort="0.4"/>
+    </joint>
+    <xacro:wheel_trans_v0 joint="lower_${prefix}leg_to_wheel_${prefix}"/>
+
+  </xacro:macro>
+</robot>

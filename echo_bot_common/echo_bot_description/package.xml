@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>echo_bot_description</name>
+  <version>0.0.1</version>
+  <description>The echo_bot description package</description>
+
+  <maintainer email="kuwano.tomohiro455@mail.kyutech.jp">calm0815</maintainer>
+  <license>MIT</license>
+
+  <author email="kuwano.tomohiro455@mail.kyutech.jp">calm0815</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roslaunch</build_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>joint_state_publisher</exec_depend>
+  <exec_depend>joint_state_publisher_gui</exec_depend>
+  <exec_depend>rviz</exec_depend>
+  <exec_depend>xacro</exec_depend>
+
+  <export>
+  </export>
+
+</package>

@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find echo_bot_description)/urdf/torso/echo_bot_torso.gazebo.xacro"/>
+
+  <xacro:macro name="torso_v0">
+
+    <link name="torso_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://echo_bot_description/meshes/DAE/torso.dae"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://echo_bot_description/meshes/STL/torso.stl"/>
+        </geometry>      
+      </collision>
+      <inertial>
+        <inertia  ixx="0.006594" 
+                  ixy="0.0" 
+                  ixz="0.000999"
+                  iyy="0.007405" 
+                  iyz="0.0"
+                  izz="0.010608"/>
+        <mass value="2.915"/>
+        <origin xyz="0.025 0 0.053" rpy="0 0 0"/>
+      </inertial>
+    </link>
+    <link name="torso_back_left"/>
+    <!-- <link name="torso_back_right"/> -->
+
+    <joint name="torso_link_to_torso_back_left" type="fixed">
+      <origin xyz="-0.04 0.0475 0.035"/>
+      <parent link="torso_link"/>
+      <child link="torso_back_left"/>
+    </joint>
+    <!-- <joint name="torso_link_to_torso_back_right" type="fixed">
+      <origin xyz="-0.04 -0.0475 0.035"/>
+      <parent link="torso_link"/>
+      <child link="torso_back_right"/>
+    </joint> -->
+
+  </xacro:macro>
+
+</robot>
