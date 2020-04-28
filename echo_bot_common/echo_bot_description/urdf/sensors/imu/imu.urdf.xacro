@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:macro name="imu_v0" params="parent *joint_origin">
+
+    <link name="imu_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <cylinder length="0.02" radius="0.01"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <cylinder length="0.02" radius="0.01"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <inertia  ixx="2.1733e-6" 
+                  ixy="0.0" 
+                  ixz="0.0"
+                  iyy="2.1733e-6"
+                  iyz="0.0"
+                  izz="1.8e-7"/>
+        <mass value="0.01"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+      </inertial>
+    </link>
+
+    <joint name="imu_joint" type="fixed">
+      <insert_block name="joint_origin"/>
+      <parent link="${parent}"/>
+      <child link="imu_link"/>
+    </joint>
+
+  </xacro:macro>
+
+</robot>

@@ -1,4 +1,4 @@
-# echo_bot_pkgs
+# echo_bot_ros_pkgs
 
 echo_bot ros packages
 
@@ -16,5 +16,5 @@ In this project, we aim to implement the following features.
 spawn echo_bot (with gazebo_ros_control) in Gazebo
 
 ```
-roslaunch echo_bot_gazebo test.launch
+roslaunch echo_bot_bringup echo_bot_bringup.launch
 ```
