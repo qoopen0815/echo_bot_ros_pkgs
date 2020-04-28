@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<package>
+  <name>echo_bot_gazebo</name>
+  <version>1.0.0</version>
+  <description>The echo_bot_gazebo package</description>
+
+  <maintainer email="kuwano.tomohiro455@mail.kyutech.jp">calm0815</maintainer>
+  <license>MIT</license>
+
+  <author email="kuwano.tomohiro455@mail.kyutech.jp">calm0815</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roslaunch</build_depend>
+  <build_depend>gazebo_ros</build_depend>
+  <run_depend>ros_control</run_depend>
+  <run_depend>gazebo_ros_control</run_depend>
+  <run_depend>gazebo_ros</run_depend>
+  <!-- <run_depend>echo_bot_bringup</run_depend> -->
+  <run_depend>echo_bot_gazebo_control</run_depend>
+  <run_depend>echo_bot_description</run_depend>
+  <run_depend>xacro</run_depend>
+  <run_depend>joy</run_depend>
+  <run_depend>joy_twist</run_depend>
+
+  <export>
+    <gazebo_ros gazebo_model_path="${prefix}/models"/>
+    <gazebo_ros plugin_path="${prefix}/lib" gazebo_media_path="${prefix}"/>
+  </export>
+</package>

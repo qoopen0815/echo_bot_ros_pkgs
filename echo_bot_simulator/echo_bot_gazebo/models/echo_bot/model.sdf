@@ -1,0 +1,534 @@
+<?xml version='1.0'?>
+<sdf version='1.6'>
+  <model name='echo_bot'>
+    <static>false</static>
+    <self_collide>1</self_collide>
+
+    <link name="base_link">
+      <pose>0 0 0 0 0 0</pose>
+    </link>
+
+    <!-- for joint debug -->
+    <!-- <joint name="world_to_torso_link" type="fixed">
+      <parent>world</parent>
+      <child>torso_link</child>
+      <pose>0 0 0 0 0 0</pose>
+    </joint> -->
+
+    <!-- torso -->
+    <link name="torso_link">
+      <self_collide>1</self_collide>
+      <pose>0 0 0 0 0 0</pose>
+      <inertial>
+        <inertia>
+          <ixx>0.006594</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.000999</ixz>
+          <iyy>0.007405</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.010608</izz>
+        </inertia>
+        <mass>2.915</mass>
+        <pose>0.025 0 0.053 0 0 0</pose>
+      </inertial>
+
+      <collision name="torso_collision">
+        <geometry>
+          <mesh>
+            <uri>model://echo_bot/meshes/DAE/torso.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0.05</mu>
+              <mu2>0.05</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+
+      <visual name="torso_visual">
+        <geometry>
+          <mesh>
+            <uri>model://echo_bot/meshes/STL/torso.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+
+    <joint name="base_link_to_torso" type="fixed">
+      <parent>base_link</parent>
+      <child>torso_link</child>
+      <pose>0 0 0 0 0 0</pose>
+    </joint>
+
+    <link name="torso_back_left">
+      <pose>-0.04 0.0475 0.035 0 0 0</pose>
+    </link>
+    <link name="torso_back_right">
+      <pose>-0.04 -0.0475 0.035 0 0 0</pose>
+    </link>
+
+    <joint name="torso_link_to_torso_back_left" type="fixed">
+      <parent>torso_link</parent>
+      <child>torso_back_left</child>
+      <pose>0 0 0 0 0 0</pose>
+    </joint>
+    <joint name="torso_link_to_torso_back_right" type="fixed">
+      <parent>torso_link</parent>
+      <child>torso_back_right</child>
+      <pose>0 0 0 0 0 0</pose>
+    </joint>
+
+    <!-- left leg -->
+    <link name="upper_lleg_link">
+      <self_collide>1</self_collide>
+      <pose>0 0.0475 0 0 2.27 0</pose>
+      <inertial>
+        <inertia>
+          <ixx>0.000311</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.000001</ixz>
+          <iyy>0.000394</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.000622</izz>
+        </inertia>
+        <mass>0.5</mass>
+        <pose>0.045 0 -0.001 0 0 0</pose>
+      </inertial>
+
+      <collision name="upper_lleg_collision">
+        <geometry>
+          <mesh>
+            <uri>model://echo_bot/meshes/DAE/upper_leg.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0.05</mu>
+              <mu2>0.05</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+
+      <visual name="upper_lleg_visual">
+        <geometry>
+          <mesh>
+            <uri>model://echo_bot/meshes/STL/upper_leg.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+
+    <joint name="torso_to_upper_lleg" type="revolute">
+      <pose>0 0 0 0 0 0</pose>
+      <parent>torso_link</parent>
+      <child>upper_lleg_link</child>
+      <axis>
+        <limit>
+          <lower>0.0</lower>
+          <upper>0.52359879</upper>
+          <effort>5</effort>
+          <velocity>3.14159274</velocity>
+        </limit>
+        <xyz>0 1 0</xyz>
+        <dynamics/>
+      </axis>
+    </joint>
+
+    <link name="lower_lleg_link">
+      <self_collide>1</self_collide>
+      <pose>-0.064279 0.0475 -0.076604 0 0.91 0</pose>
+      <inertial>
+        <inertia>
+          <ixx>0.000151</ixx>
+          <ixy>-0.000041</ixy>
+          <ixz>-0.000004</ixz>
+          <iyy>0.000795</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.000777</izz>
+        </inertia>
+        <mass>0.5</mass>
+        <pose>0.058 0.001 -0.001 0 0 0</pose>
+      </inertial>
+
+      <collision name="lower_lleg_collision">
+        <geometry>
+          <mesh>
+            <uri>model://echo_bot/meshes/DAE/lower_lleg.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0.05</mu>
+              <mu2>0.05</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+
+      <visual name="lower_lleg_visual">
+        <geometry>
+          <mesh>
+            <uri>model://echo_bot/meshes/STL/lower_lleg.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+
+    <joint name="upper_lleg_to_lower_lleg" type="revolute">
+      <parent>upper_lleg_link</parent>
+      <child>lower_lleg_link</child>
+      <pose>0 0 0 0 0 0</pose>
+      <axis>
+        <xyz>0 1 0</xyz>
+      </axis>
+    </joint>
+
+    <link name="upper_side_lleg_link">
+      <self_collide>1</self_collide>
+      <pose>-0.079580 0.0475 -0.056834 0 -1.16 0</pose>
+      <inertial>
+        <inertia>
+          <ixx>0.000018</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.000316</iyy>
+          <iyz>0</iyz>
+          <izz>0.000314</izz>
+        </inertia>
+        <mass>0.3</mass>
+        <pose>0.05 0 0 0 0 0</pose>
+      </inertial>
+
+      <collision name="upper_side_lleg_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://echo_bot/meshes/DAE/upper_side_leg.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0.05</mu>
+              <mu2>0.05</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+
+      <visual name="upper_side_lleg_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://echo_bot/meshes/STL/upper_side_leg.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+
+    <joint name="lower_lleg_to_upper_side_lleg" type="revolute">
+      <parent>lower_lleg_link</parent>
+      <child>upper_side_lleg_link</child>
+      <pose>0 0 0 0 0 0</pose>
+      <axis>
+        <xyz>0 1 0</xyz>
+      </axis>
+    </joint>
+
+    <joint name="upper_side_lleg_to_torso_back_left" type="revolute">
+      <parent>upper_side_lleg_link</parent>
+      <child>torso_back_left</child>
+      <pose>0 0 0 0 0 0</pose>
+      <axis>
+        <xyz>0 1 0</xyz>
+      </axis>
+    </joint>
+
+    <link name="wheel_l">
+      <pose>-0.003075 0.078 -0.155687 -1.57079637 0 0</pose>
+      <inertial>
+        <inertia>
+          <ixx>0.000042</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>0.000042</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.000076</izz>
+        </inertia>
+        <mass>0.2</mass>
+        <pose>0 0 0 0 0 0</pose>
+      </inertial>
+
+      <collision name="wheel_l_collision">
+        <geometry>
+          <mesh>
+            <uri>model://echo_bot/meshes/DAE/tyre.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0.05</mu>
+              <mu2>0.05</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+
+      <visual name="wheel_l_visual">
+        <geometry>
+          <mesh>
+            <uri>model://echo_bot/meshes/STL/tyre.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+
+    <joint name="lower_lleg_to_wheel_l" type="revolute">
+      <parent>lower_lleg_link</parent>
+      <child>wheel_l</child>
+      <pose>0 0 0 0 0 0</pose>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <dynamics/>
+      </axis>
+    </joint>
+
+    <!-- right leg -->
+    <link name="upper_rleg_link">
+      <self_collide>1</self_collide>
+      <pose>0 -0.0475 0 0 2.27 0</pose>
+      <inertial>
+        <inertia>
+          <ixx>0.000311</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.000001</ixz>
+          <iyy>0.000394</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.000622</izz>
+        </inertia>
+        <mass>0.5</mass>
+        <pose>0.045 0 -0.001 0 0 0</pose>
+      </inertial>
+
+      <collision name="upper_rleg_collision">
+        <geometry>
+          <mesh>
+            <uri>model://echo_bot/meshes/DAE/upper_leg.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0.05</mu>
+              <mu2>0.05</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+
+      <visual name="upper_rleg_visual">
+        <geometry>
+          <mesh>
+            <uri>model://echo_bot/meshes/STL/upper_leg.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+
+    <joint name="torso_to_upper_rleg" type="revolute">
+      <pose>0 0 0 0 0 0</pose>
+      <parent>torso_link</parent>
+      <child>upper_rleg_link</child>
+      <axis>
+        <limit>
+          <lower>0.0</lower>
+          <upper>0.52359879</upper>
+          <effort>5</effort>
+          <velocity>3.14159274</velocity>
+        </limit>
+        <xyz>0 1 0</xyz>
+        <dynamics/>
+      </axis>
+    </joint>
+
+    <link name="lower_rleg_link">
+      <self_collide>1</self_collide>
+      <pose>-0.064279 -0.0475 -0.076604 0 0.91 0</pose>
+      <inertial>
+        <inertia>
+          <ixx>0.000151</ixx>
+          <ixy>-0.000041</ixy>
+          <ixz>-0.000004</ixz>
+          <iyy>0.000795</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.000777</izz>
+        </inertia>
+        <mass>0.5</mass>
+        <pose>0.058 0.001 -0.001 0 0 0</pose>
+      </inertial>
+
+      <collision name="lower_rleg_collision">
+        <geometry>
+          <mesh>
+            <uri>model://echo_bot/meshes/DAE/lower_rleg.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0.05</mu>
+              <mu2>0.05</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+
+      <visual name="lower_rleg_visual">
+        <geometry>
+          <mesh>
+            <uri>model://echo_bot/meshes/STL/lower_rleg.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+
+    <joint name="upper_rleg_to_lower_rleg" type="revolute">
+      <parent>upper_rleg_link</parent>
+      <child>lower_rleg_link</child>
+      <pose>0 0 0 0 0 0</pose>
+      <axis>
+        <xyz>0 1 0</xyz>
+      </axis>
+    </joint>
+
+    <link name="upper_side_rleg_link">
+      <self_collide>1</self_collide>
+      <pose>-0.079580 -0.0475 -0.056834 0 -1.16 0</pose>
+      <inertial>
+        <inertia>
+          <ixx>0.000018</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.000316</iyy>
+          <iyz>0</iyz>
+          <izz>0.000314</izz>
+        </inertia>
+        <mass>0.3</mass>
+        <pose>0.05 0 0 0 0 0</pose>
+      </inertial>
+
+      <collision name="upper_side_rleg_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://echo_bot/meshes/DAE/upper_side_leg.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0.05</mu>
+              <mu2>0.05</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+
+      <visual name="upper_side_rleg_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://echo_bot/meshes/STL/upper_side_leg.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+
+    <joint name="lower_rleg_to_upper_side_rleg" type="revolute">
+      <parent>lower_rleg_link</parent>
+      <child>upper_side_rleg_link</child>
+      <pose>0 0 0 0 0 0</pose>
+      <axis>
+        <xyz>0 1 0</xyz>
+      </axis>
+    </joint>
+
+    <joint name="upper_side_rleg_to_torso_back_right" type="revolute">
+      <parent>upper_side_rleg_link</parent>
+      <child>torso_back_right</child>
+      <pose>0 0 0 0 0 0</pose>
+      <axis>
+        <xyz>0 1 0</xyz>
+      </axis>
+    </joint>
+
+    <link name="wheel_r">
+      <pose>-0.003075 -0.078 -0.155687 -1.57079637 0 0</pose>
+      <inertial>
+        <inertia>
+          <ixx>0.000042</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>0.000042</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.000076</izz>
+        </inertia>
+        <mass>0.2</mass>
+        <pose>0 0 0 0 0 0</pose>
+      </inertial>
+
+      <collision name="wheel_r_collision">
+        <geometry>
+          <mesh>
+            <uri>model://echo_bot/meshes/DAE/tyre.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0.05</mu>
+              <mu2>0.05</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+
+      <visual name="wheel_r_visual">
+        <geometry>
+          <mesh>
+            <uri>model://echo_bot/meshes/STL/tyre.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+
+    <joint name="lower_rleg_to_wheel_r" type="revolute">
+      <parent>lower_rleg_link</parent>
+      <child>wheel_r</child>
+      <pose>0 0 0 0 0 0</pose>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <dynamics/>
+      </axis>
+    </joint>
+
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>echo_bot</robotNamespace>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+      <legacyModeNS>true</legacyModeNS>
+    </plugin>
+
+    <plugin name="joint_state_publisher" filename="libgazebo_ros_joint_state_publisher.so">
+      <robotNamespace>echo_bot</robotNamespace>
+      <jointName>torso_to_upper_lleg, torso_to_upper_rleg, upper_lleg_to_lower_lleg, upper_rleg_to_lower_rleg, lower_lleg_to_upper_side_lleg, lower_rleg_to_upper_side_rleg, lower_lleg_to_wheel_l, lower_rleg_to_wheel_r</jointName>
+    </plugin>
+
+  </model>
+</sdf>

@@ -1,0 +1,29 @@
+<launch>
+
+  <!-- Load the URDF into the ROS Parameter Server -->
+  <arg name="model" default="$(find echo_bot_description)/robots/echo_bot.urdf.xacro"/>
+  <param  name="robot_description" command="$(find xacro)/xacro.py '$(arg model)'"/>
+
+  <arg name="paused" default="false"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+
+  <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <!-- <arg name="world_name" value="$(find echo_bot_gazebo)/worlds/clearpath_playpen.world"/> -->
+    <arg name="debug" value="$(arg debug)" />
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg name="headless" value="$(arg headless)"/>
+  </include>
+
+  <!-- spawn echo_bot -->
+  <include file="$(find echo_bot_gazebo)/launch/spawn_echo_bot.launch"/>
+
+  <!-- ros_control launch file -->
+  <include file="$(find echo_bot_gazebo_control)/launch/echo_bot_gazebo_control.launch"/>
+
+</launch>

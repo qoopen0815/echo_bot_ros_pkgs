@@ -1,0 +1,27 @@
+<launch>
+
+  <arg name="show_rviz" default="true"/>
+
+  <!-- robot visualization in Rviz -->
+  <group if="$(arg show_rviz)">
+    <node name="rviz" pkg="rviz" type="rviz" output="screen" args="-d $(find echo_bot_gazebo)/launch/config/display.rviz"/>
+  </group>
+
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find echo_bot_gazebo_control)/config/controller.yaml" command="load"/>
+
+  <!-- load the controllers -->
+  <node name="controller_spawner" pkg="controller_manager" 
+        type="spawner" ns="echo_bot" output="screen"
+        args="diff_drive_controller
+              upper_lleg_effort_controller
+              upper_rleg_effort_controller">
+  </node>
+
+  <!-- convert joint states to TF transforms for rviz, etc -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher"
+        type="robot_state_publisher" ns="echo_bot"
+        respawn="false" output="screen">
+  </node>
+
+</launch>

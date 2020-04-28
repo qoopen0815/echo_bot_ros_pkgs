@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<launch>
+  <include file="$(find echo_bot_gazebo)/launch/spawn_sdf.launch" >
+    <arg name="robot_name" default="echo_bot"/>
+    <arg name="x" default="0.0"/>
+    <arg name="y" default="0.0"/>
+    <arg name="z" default="0.2"/>
+    <arg name="roll" default="0.0"/>
+    <arg name="pitch" default="0.0"/>
+    <arg name="yaw" default="0.0"/>
+    <arg name="sdf_robot_file" default="$(find echo_bot_gazebo)/models/echo_bot/model.sdf"/>
+  </include>
+</launch>
