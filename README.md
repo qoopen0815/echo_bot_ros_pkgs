@@ -4,8 +4,12 @@ echo_bot ros packages
 
 ## Overview
 
-ROS package for my self-made robot "echo_bot".
-In this project, I aim to implement posture control by the inverted pendulum algorithm and inverse kinematics, and communication by linking with Amazon Echo Dot.
+ROS package for my self-made robot "echo_bot".  
+In this project, we aim to implement the following features.  
+
+- Self balancing algorithm
+- Roll angle control by inverse kinematics
+- Communication by linking with Amazon Echo Dot
 
 ## Gazebo Simulation
 
