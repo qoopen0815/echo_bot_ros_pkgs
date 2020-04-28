@@ -7,7 +7,7 @@ echo_bot ros packages
 ROS package for my self-made robot "echo_bot".  
 In this project, we aim to implement the following features.  
 
-- Self balancing algorithm
+- Self balancing control algorithm
 - Roll angle control by inverse kinematics
 - Communication by linking with Amazon Echo Dot
 
