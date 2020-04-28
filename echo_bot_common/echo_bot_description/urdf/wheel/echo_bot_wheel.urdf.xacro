@@ -2,7 +2,6 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
   <xacro:include filename="$(find echo_bot_description)/urdf/wheel/echo_bot_wheel.transmission.xacro"/>
-  <xacro:include filename="$(find echo_bot_description)/urdf/wheel/echo_bot_wheel.gazebo.xacro"/>
 
   <property name="wheel_radius" value="0.029"/>
   <property name="wheel_length" value="0.012"/>

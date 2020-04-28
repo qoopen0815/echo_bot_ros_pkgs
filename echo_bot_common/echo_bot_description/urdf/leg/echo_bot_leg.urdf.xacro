@@ -2,7 +2,6 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
   <xacro:include filename="$(find echo_bot_description)/urdf/leg/echo_bot_leg.transmission.xacro"/>
-  <xacro:include filename="$(find echo_bot_description)/urdf/leg/echo_bot_leg.gazebo.xacro"/>
 
   <xacro:macro name="leg_v0" params="parent prefix *joint_origin">
     <!-- Link -->
