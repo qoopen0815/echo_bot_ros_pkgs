@@ -5,7 +5,7 @@ echo_bot ros packages
 ## Overview
 
 ROS package for my self-made robot "echo_bot".  
-In this project, we aim to implement the following features.  
+In this project, I aim to implement the following features.  
 
 - Self balancing control algorithm
 - Roll angle control by inverse kinematics
