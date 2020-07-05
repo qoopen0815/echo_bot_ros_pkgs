@@ -19,7 +19,7 @@
     <link name="wheel_${prefix}">
       <visual>
         <geometry>
-          <mesh filename="package://echo_bot_description/meshes/DAE/tyre.dae"/>
+          <mesh filename="package://echo_bot_description/meshes/DAE/wheel.dae"/>
         </geometry>
       </visual>
       <collision>
@@ -27,7 +27,7 @@
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
           <!-- <cylinder radius="${wheel_radius}" length="${wheel_length}"/> -->
-          <mesh filename="package://echo_bot_description/meshes/STL/tyre.stl"/>
+          <mesh filename="package://echo_bot_description/meshes/STL/wheel.stl"/>
         </geometry>      
       </collision>
       <inertial>

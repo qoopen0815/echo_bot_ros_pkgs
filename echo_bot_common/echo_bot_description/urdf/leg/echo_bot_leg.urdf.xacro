@@ -9,13 +9,13 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://echo_bot_description/meshes/DAE/upper_leg.dae"/>
+          <mesh filename="package://echo_bot_description/meshes/DAE/upper_${prefix}leg.dae"/>
         </geometry>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://echo_bot_description/meshes/STL/upper_leg.stl"/>
+          <mesh filename="package://echo_bot_description/meshes/STL/upper_${prefix}leg.stl"/>
         </geometry>      
       </collision>
       <inertial>
@@ -58,13 +58,13 @@
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <material name="leg_color_0"/>
         <geometry>
-          <mesh filename="package://echo_bot_description/meshes/DAE/upper_side_leg.dae"/>
+          <mesh filename="package://echo_bot_description/meshes/DAE/upper_side_${prefix}leg.dae"/>
         </geometry>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://echo_bot_description/meshes/STL/upper_side_leg.stl"/>
+          <mesh filename="package://echo_bot_description/meshes/STL/upper_side_${prefix}leg.stl"/>
         </geometry>      
       </collision>
       <inertial>

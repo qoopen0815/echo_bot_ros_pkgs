@@ -101,7 +101,7 @@
       <collision name="upper_lleg_collision">
         <geometry>
           <mesh>
-            <uri>model://echo_bot/meshes/STL/upper_leg.stl</uri>
+            <uri>model://echo_bot/meshes/STL/upper_lleg.stl</uri>
           </mesh>
         </geometry>
         <surface>
@@ -117,7 +117,7 @@
       <visual name="upper_lleg_visual">
         <geometry>
           <mesh>
-            <uri>model://echo_bot/meshes/DAE/upper_leg.dae</uri>
+            <uri>model://echo_bot/meshes/DAE/upper_lleg.dae</uri>
           </mesh>
         </geometry>
       </visual>
@@ -209,7 +209,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://echo_bot/meshes/STL/upper_side_leg.stl</uri>
+            <uri>model://echo_bot/meshes/STL/upper_side_lleg.stl</uri>
           </mesh>
         </geometry>
         <surface>
@@ -226,7 +226,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://echo_bot/meshes/DAE/upper_side_leg.dae</uri>
+            <uri>model://echo_bot/meshes/DAE/upper_side_lleg.dae</uri>
           </mesh>
         </geometry>
       </visual>
@@ -269,7 +269,7 @@
       <collision name="wheel_l_collision">
         <geometry>
           <mesh>
-            <uri>model://echo_bot/meshes/STL/tyre.stl</uri>
+            <uri>model://echo_bot/meshes/STL/wheel.stl</uri>
           </mesh>
         </geometry>
         <surface>
@@ -285,7 +285,7 @@
       <visual name="wheel_l_visual">
         <geometry>
           <mesh>
-            <uri>model://echo_bot/meshes/DAE/tyre.dae</uri>
+            <uri>model://echo_bot/meshes/DAE/wheel.dae</uri>
           </mesh>
         </geometry>
       </visual>
@@ -321,7 +321,7 @@
       <collision name="upper_rleg_collision">
         <geometry>
           <mesh>
-            <uri>model://echo_bot/meshes/STL/upper_leg.stl</uri>
+            <uri>model://echo_bot/meshes/STL/upper_rleg.stl</uri>
           </mesh>
         </geometry>
         <surface>
@@ -337,7 +337,7 @@
       <visual name="upper_rleg_visual">
         <geometry>
           <mesh>
-            <uri>model://echo_bot/meshes/DAE/upper_leg.dae</uri>
+            <uri>model://echo_bot/meshes/DAE/upper_rleg.dae</uri>
           </mesh>
         </geometry>
       </visual>
@@ -429,7 +429,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://echo_bot/meshes/STL/upper_side_leg.stl</uri>
+            <uri>model://echo_bot/meshes/STL/upper_side_rleg.stl</uri>
           </mesh>
         </geometry>
         <surface>
@@ -446,7 +446,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <uri>model://echo_bot/meshes/DAE/upper_side_leg.dae</uri>
+            <uri>model://echo_bot/meshes/DAE/upper_side_rleg.dae</uri>
           </mesh>
         </geometry>
       </visual>
@@ -489,7 +489,7 @@
       <collision name="wheel_r_collision">
         <geometry>
           <mesh>
-            <uri>model://echo_bot/meshes/STL/tyre.stl</uri>
+            <uri>model://echo_bot/meshes/STL/wheel.stl</uri>
           </mesh>
         </geometry>
         <surface>
@@ -505,7 +505,7 @@
       <visual name="wheel_r_visual">
         <geometry>
           <mesh>
-            <uri>model://echo_bot/meshes/DAE/tyre.dae</uri>
+            <uri>model://echo_bot/meshes/DAE/wheel.dae</uri>
           </mesh>
         </geometry>
       </visual>
