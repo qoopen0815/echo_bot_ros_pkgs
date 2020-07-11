@@ -17,14 +17,14 @@
         </geometry>      
       </collision>
       <inertial>
-        <inertia  ixx="0.006594" 
-                  ixy="0.0" 
-                  ixz="0.000999"
-                  iyy="0.007405" 
-                  iyz="0.0"
-                  izz="0.010608"/>
-        <mass value="2.915"/>
-        <origin xyz="0.025 0 0.053" rpy="0 0 0"/>
+        <inertia  ixx="0.0028602"
+                  ixy="-0.0000824"
+                  ixz="0.0004955"
+                  iyy="0.0038656" 
+                  iyz="-0.0000108"
+                  izz="0.0042401"/>
+        <mass value="1.23"/>
+        <origin xyz="0.006457 0 0.044346" rpy="0 0 0"/>
       </inertial>
     </link>
     <link name="torso_back_left"/>
